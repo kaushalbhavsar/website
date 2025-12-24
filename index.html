@@ -1,0 +1,760 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>bhavsar.ai</title>
+
+  <!-- jsPlumb Community (Browser UI bundle) -->
+  <script src="https://cdn.jsdelivr.net/npm/@jsplumb/browser-ui@6.2.8/js/jsplumb.browser-ui.umd.min.js"></script>
+
+  <style>
+    /* =========================================================
+       bhavsar.ai — White-first, richer palette, non-academic
+       ========================================================= */
+    :root{
+      /* Authority ink */
+      --ink:#1B0B3A;           /* near-black purple */
+      --ink-2:#2A1457;         /* supporting ink */
+      --muted:#5B4A7A;         /* readable muted */
+
+      /* Core brand purple (stronger) */
+      --purple-core:#5B2FAF;   /* confident purple */
+      --purple-core-2:#4E2A8E; /* deeper (logo-ish) */
+
+      /* Accents */
+      --purple-soft:#EEE6FF;   /* soft fill */
+      --purple-soft-2:#F7F2FF; /* panel tint */
+      --border:#E3D6FF;        /* crisp border */
+      --border-2:#D5C4FF;      /* stronger border */
+
+      /* Connectors */
+      --connector-main: var(--purple-core);
+      --connector-outline: rgba(91,47,175,.18);
+
+      --radius:22px;
+
+      /* Shadow tuned to feel premium */
+      --shadow: 0 18px 60px rgba(27,11,58,.10);
+      --shadow-2: 0 10px 28px rgba(91,47,175,.16);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--ink);
+      line-height:1.55;
+      background:#fff;
+    }
+
+    a{color:var(--purple-core); text-decoration:none; border-bottom:1px solid rgba(91,47,175,.28)}
+    a:hover{border-bottom-color:rgba(91,47,175,.55)}
+
+    .wrap{max-width:1120px; margin:0 auto; padding:54px 20px 86px}
+
+    /* ===== Topbar ===== */
+    .top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:28px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      font-weight:850; letter-spacing:.01em;
+      color: var(--purple-core-2);
+    }
+    .logoMark{
+      width:34px; height:34px; border-radius:12px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(91,47,175,.26), rgba(91,47,175,.08));
+      border:1px solid var(--border);
+      box-shadow: 0 12px 28px rgba(91,47,175,.12);
+    }
+    .chiprow{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    .chip{
+      display:inline-flex; align-items:center;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:#fff;
+      color: var(--ink-2);
+      font-size:13px;
+      font-weight:650;
+      box-shadow: 0 8px 18px rgba(27,11,58,.06);
+    }
+
+    /* ===== Hero ===== */
+    .hero{padding:14px 0 10px;}
+    h1{
+      font-size:52px;
+      line-height:1.04;
+      letter-spacing:-.035em;
+      margin:0 0 14px;
+      color: var(--ink);
+    }
+    .lede{
+      font-size:17px;
+      color: var(--muted);
+      max-width:86ch;
+      margin:0 0 18px;
+    }
+
+    .ctaRow{
+      display:flex; gap:12px; flex-wrap:wrap;
+      margin:18px 0 10px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:#fff;
+      color: var(--ink-2);
+      font-weight:800;
+      font-size:14px;
+      box-shadow: 0 10px 26px rgba(27,11,58,.06);
+    }
+    .btn.primary{
+      border:none;
+      background: linear-gradient(180deg, var(--purple-core), var(--purple-core-2));
+      color:#fff;
+      box-shadow: 0 16px 34px rgba(91,47,175,.22);
+    }
+    .btn .spark{
+      width:8px; height:8px; border-radius:999px;
+      background: rgba(255,255,255,.95);
+      box-shadow: 0 0 0 6px rgba(255,255,255,.20);
+    }
+
+    /* ===== Sections ===== */
+    .section{
+      margin-top:22px;
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      background:#fff;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .sectionHead{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:12px;
+      padding:18px 18px 12px;
+      border-bottom:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(91,47,175,.06), rgba(0,0,0,0));
+    }
+    .kicker{
+      font-size:12px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color: rgba(27,11,58,.70);
+      font-weight:800;
+    }
+    .sdesc{
+      font-size:14px;
+      color: var(--muted);
+      margin-top:6px;
+      max-width:90ch;
+    }
+    .content{padding:18px}
+
+    /* ===== Venn block ===== */
+    .venn{
+      position:relative;
+      height:420px;
+      border:1px solid var(--border);
+      border-radius:18px;
+      background:
+        radial-gradient(900px 520px at 15% 5%, rgba(91,47,175,.10), transparent 55%),
+        radial-gradient(900px 520px at 85% 20%, rgba(78,42,142,.10), transparent 55%),
+        linear-gradient(180deg, var(--purple-soft-2), #fff);
+      overflow:hidden;
+    }
+    .circle{
+      position:absolute;
+      width:280px; height:280px;
+      border-radius:50%;
+      border:3.5px solid var(--purple-core);
+      background: transparent;
+    }
+    .circle.left{ left:260px; top:78px; }
+    .circle.right{ left:420px; top:78px; }
+
+    .intersection{
+      position:absolute;
+      left: 365px;
+      top: 78px;
+      width: 250px;
+      height: 280px;
+      background: var(--purple-soft);
+      clip-path: path("M125 0 C190 20 230 70 230 140 C230 210 190 260 125 280 C60 260 20 210 20 140 C20 70 60 20 125 0 Z");
+      border-radius: 999px;
+      pointer-events:none;
+      box-shadow: inset 0 0 0 1px rgba(91,47,175,.10);
+    }
+
+    .labelA,.labelB{
+      position:absolute; top:34px;
+      font-weight:900; color: var(--ink);
+      font-size:18px;
+    }
+    .labelA{ left:330px; }
+    .labelB{ left:560px; }
+
+    .subtitleA,.subtitleB{
+      position:absolute; top:60px;
+      font-weight:850; color: var(--purple-core);
+      font-size:14px;
+    }
+    .subtitleA{ left:260px; }
+    .subtitleB{ left:540px; }
+
+    .centerText{
+      position:absolute;
+      left:50%;
+      top:210px;
+      transform:translate(-50%,-50%);
+      text-align:center;
+      font-weight:950;
+      color: var(--ink);
+      line-height:1.15;
+      font-size:22px;
+      z-index:2;
+    }
+    .centerText span{display:block;}
+    .foot{
+      position:absolute;
+      left:50%;
+      bottom:26px;
+      transform:translateX(-50%);
+      font-size:14px;
+      color: var(--purple-core-2);
+      font-weight:850;
+    }
+
+    /* jsPlumb anchor points for the Venn pointer */
+    .anchor{
+      position:absolute;
+      width:16px; height:16px;
+      border-radius:50%;
+      background: transparent;
+      border:0;
+    }
+
+    /* ===== Diagrams ===== */
+    .diagram{
+      position:relative;
+      border:1px solid var(--border);
+      border-radius:18px;
+      overflow:hidden;
+      min-height: 540px;
+      background:
+        radial-gradient(800px 520px at 25% 15%, rgba(91,47,175,.10), transparent 58%),
+        radial-gradient(780px 520px at 80% 30%, rgba(78,42,142,.08), transparent 58%),
+        linear-gradient(180deg, var(--purple-soft-2), #fff);
+    }
+    .diagram.small{min-height:430px}
+
+    /* Nodes (crisper + deeper) */
+    .node{
+      position:absolute;
+      width: 380px;
+      padding: 16px 16px 14px;
+      border-radius: 18px;
+      background:#fff;
+      border: 1px solid var(--border-2);
+      box-shadow: var(--shadow-2);
+      user-select:none;
+    }
+    .node.alt{
+      background: linear-gradient(180deg, #fff, var(--purple-soft-2));
+      border-color: rgba(91,47,175,.35);
+    }
+    .node.tiny{width: 270px;}
+    .node.small{width: 310px;}
+
+    .title{font-size:17px; font-weight:950; letter-spacing:.01em; color:var(--ink)}
+    .meta{margin-top:6px; font-size:13px; color:var(--muted); font-weight:650}
+
+    /* Text blocks */
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+      margin-top:14px;
+    }
+    @media(min-width: 900px){
+      .grid2{grid-template-columns: 1fr 1fr;}
+    }
+    .card{
+      border:1px solid var(--border);
+      border-radius:18px;
+      background: #fff;
+      padding:16px;
+      box-shadow: 0 10px 24px rgba(27,11,58,.06);
+    }
+    .card h3{
+      margin:0 0 10px;
+      font-size:14px;
+      color: var(--ink);
+      letter-spacing:.01em;
+      font-weight:900;
+    }
+    .card p{margin:0; color:var(--muted); font-size:14px; font-weight:560;}
+    .bullets{margin:10px 0 0; padding-left:18px; color:var(--muted); font-size:14px; font-weight:560;}
+    .bullets li{margin:6px 0;}
+
+    .quote{
+      margin-top:14px;
+      padding:16px;
+      border-radius:18px;
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, #fff, var(--purple-soft-2));
+      color: var(--muted);
+      font-size:14px;
+      box-shadow: 0 10px 24px rgba(27,11,58,.06);
+    }
+    .quote strong{color: var(--ink)}
+    .quote span{color: var(--muted)}
+
+    /* Work cards */
+    .workGrid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:12px;
+    }
+    @media(min-width: 900px){
+      .workGrid{grid-template-columns: 1fr 1fr 1fr;}
+    }
+    .workCard{
+      border:1px solid var(--border);
+      border-radius:18px;
+      background:#fff;
+      padding:16px;
+      min-height: 155px;
+      box-shadow: 0 10px 24px rgba(27,11,58,.06);
+    }
+    .workCard .label{
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color: rgba(27,11,58,.70);
+      font-weight:900;
+      margin-bottom:10px;
+    }
+    .workCard .head{
+      font-weight:950;
+      color: var(--ink);
+      margin-bottom:8px;
+      line-height:1.22;
+    }
+    .workCard .body{
+      color: var(--muted);
+      font-size:14px;
+      margin:0;
+      font-weight:560;
+    }
+
+    .footer{
+      margin-top:26px;
+      display:flex; flex-wrap:wrap; gap:12px;
+      align-items:center; justify-content:space-between;
+      color:var(--muted);
+      font-size:14px;
+      border-top:1px solid var(--border);
+      padding-top:16px;
+    }
+
+    /* jsPlumb endpoints hidden; only connectors */
+    .jtk-endpoint { opacity:0; }
+
+    /* Mobile */
+    @media (max-width: 560px){
+      h1{font-size:40px}
+      .node{width: 88vw}
+      .node.tiny,.node.small{width: 88vw}
+      .circle.left{ left:12vw; }
+      .circle.right{ left:40vw; }
+      .intersection{ left:28vw; }
+      .labelA{ left:22vw; }
+      .subtitleA{ left:12vw; }
+      .labelB{ left:72vw; }
+      .subtitleB{ left:62vw; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand"><span class="logoMark"></span> bhavsar.ai</div>
+      <div class="chiprow">
+        <div class="chip">Behavior modeling</div>
+        <div class="chip">Security systems</div>
+        <div class="chip">Applied AI</div>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>Security breaks at the human layer.<br/>That’s where I work.</h1>
+      <p class="lede">
+        I build security systems that reason about behavior over time — baselines, drift, anomalies, and context.
+        I’m less interested in “did a rule trigger?” and more interested in “does this still make sense?”
+      </p>
+
+      <div class="ctaRow">
+        <a class="btn primary" href="#model"><span class="spark"></span> Model</a>
+        <a class="btn" href="#signals">Signals</a>
+        <a class="btn" href="#work">Work</a>
+        <a class="btn" href="#contact">Contact</a>
+      </div>
+      <div style="margin-top:10px; color: var(--muted); font-weight:650; font-size:14px;">
+  Writing: <a href="https://kaushalbhavsar.substack.com" target="_blank" rel="noopener">Substack</a> →
+</div>
+
+    </div>
+
+    <!-- VENN ORIENTATION -->
+    <section class="section">
+      <div class="sectionHead">
+        <div>
+          <div class="kicker">Orientation</div>
+          <div class="sdesc">
+            A fast way to locate my work: behavioral security + applied AI. The overlap is where the human layer becomes a security problem.
+          </div>
+        </div>
+        <div class="kicker" style="opacity:.72">Behavioral Security × Applied AI</div>
+      </div>
+
+      <div class="content">
+        <div id="venn" class="venn">
+          <div class="intersection"></div>
+          <div class="circle left"></div>
+          <div class="circle right"></div>
+
+          <div class="labelA">A</div>
+          <div class="subtitleA">Behavioral Security</div>
+
+          <div class="labelB">B</div>
+          <div class="subtitleB">Applied AI</div>
+
+          <div class="centerText">
+            <span>Human-layer</span>
+            <span>Security Systems</span>
+          </div>
+
+          <div class="foot">This is where my work lives</div>
+
+          <!-- jsPlumb anchors (for a curved pointer arrow) -->
+          <div id="fromText" class="anchor" style="left:90px; top:270px;"></div>
+          <div id="toOverlap" class="anchor" style="left:495px; top:225px;"></div>
+
+          <!-- label that the arrow points from -->
+          <div style="position:absolute; left:54px; top:244px; font-weight:950; color:var(--purple-core-2);">
+            I work here →
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: MODEL -->
+    <section id="model" class="section">
+      <div class="sectionHead">
+        <div>
+          <div class="kicker">Model</div>
+          <div class="sdesc">
+            Short version: start with people, model behavior, reason about change, then support decisions that hold up under scrutiny.
+          </div>
+        </div>
+        <div class="kicker" style="opacity:.72">Humans → Behavior → Reasoning → Decisions</div>
+      </div>
+
+      <div class="content">
+        <div id="diagram1" class="diagram">
+          <div id="humans" class="node tiny alt" style="left:50%; top:38px; transform:translateX(-50%);">
+            <div class="title">Humans</div>
+            <div class="meta">intent • habits • stress • misuse</div>
+          </div>
+
+          <div id="behavior" class="node" style="left:50%; top:170px; transform:translateX(-50%);">
+            <div class="title">Behavior Layer</div>
+            <div class="meta">baselines • drift • anomalies</div>
+          </div>
+
+          <div id="reasoning" class="node" style="left:50%; top:320px; transform:translateX(-50%);">
+            <div class="title">AI Reasoning</div>
+            <div class="meta">patterns • correlation • explanation</div>
+          </div>
+
+          <div id="systems" class="node" style="left:50%; top:466px; transform:translateX(-50%);">
+            <div class="title">Security Systems</div>
+            <div class="meta">trust signals • investigator workflow • decisions</div>
+          </div>
+        </div>
+
+        <div class="grid2">
+          <div class="card">
+            <h3>What I treat as real problems</h3>
+            <p>
+              The hardest threats aren’t loud. They look like legitimate work until you notice drift, timing, and access paths.
+            </p>
+            <ul class="bullets">
+              <li>privilege creep and slow access expansion</li>
+              <li>data exposure spread across many small actions</li>
+              <li>misuse hidden inside normal workflows</li>
+              <li>anomalies that need context, not thresholds</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>How I keep it usable</h3>
+            <p>
+              I optimize for investigator decision quality. Fewer findings, higher confidence, clear explanations.
+            </p>
+            <ul class="bullets">
+              <li>make “why” visible, not just “what”</li>
+              <li>link anomalies to supporting signals</li>
+              <li>design for missing data and imperfect telemetry</li>
+              <li>ship systems that remain trustworthy at scale</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="quote">
+          <strong>My definition of a useful detection:</strong>
+          it changes what an investigator would do next — and it can defend that recommendation.
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: SIGNALS -->
+    <section id="signals" class="section">
+      <div class="sectionHead">
+        <div>
+          <div class="kicker">Signals</div>
+          <div class="sdesc">
+            Logs, identity, and access are raw ingredients. The value shows up only after modeling behavior over time.
+          </div>
+        </div>
+        <div class="kicker" style="opacity:.72">Events → Modeling → Signals</div>
+      </div>
+
+      <div class="content">
+        <div id="diagram2" class="diagram small">
+          <div id="logs" class="node tiny" style="left:64px; top:86px;">
+            <div class="title">Logs</div>
+            <div class="meta">events • sequences • timing</div>
+          </div>
+
+          <div id="identity" class="node tiny" style="left:64px; top:192px;">
+            <div class="title">Identity</div>
+            <div class="meta">roles • auth • groups</div>
+          </div>
+
+          <div id="access" class="node tiny" style="left:64px; top:298px;">
+            <div class="title">Access</div>
+            <div class="meta">resources • privilege • paths</div>
+          </div>
+
+          <div id="modeling" class="node alt" style="left:50%; top:220px; transform:translateX(-50%);">
+            <div class="title">Behavior Modeling</div>
+            <div class="meta">context • time • drift</div>
+          </div>
+
+          <div id="signalsOut" class="node small" style="right:64px; top:220px;">
+            <div class="title">Insider / Abuse Signals</div>
+            <div class="meta">risk • anomaly • intent cues</div>
+          </div>
+        </div>
+
+        <div class="grid2">
+          <div class="card">
+            <h3>How I judge signal quality</h3>
+            <ul class="bullets">
+              <li>they survive noisy enterprise reality</li>
+              <li>they capture sequences and change over time</li>
+              <li>they can be explained to a human</li>
+              <li>they reduce uncertainty, not add fear</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>What I don’t build</h3>
+            <ul class="bullets">
+              <li>dashboards that re-label alerts</li>
+              <li>AI wrappers with no grounding</li>
+              <li>fear-first security marketing</li>
+              <li>checklist products</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="quote">
+          <strong>Most security asks:</strong> “Did this violate a rule?”<br/>
+          <span>I ask:</span> “Does this behavior still make sense — given who, when, and what changed?”
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: WORK -->
+    <section id="work" class="section">
+      <div class="sectionHead">
+        <div>
+          <div class="kicker">Work</div>
+          <div class="sdesc">
+            I describe work as systems and constraints — not a list of roles. These are my operating lanes.
+          </div>
+        </div>
+        <div class="kicker" style="opacity:.72">Systems > Titles</div>
+      </div>
+
+      <div class="content">
+        <div class="workGrid">
+          <div class="workCard">
+            <div class="label">Behavioral security</div>
+            <div class="head">I model normal with time, not templates.</div>
+            <p class="body">Baselines, drift, long-tail anomalies, and “looks normal until it doesn’t” misuse.</p>
+          </div>
+
+          <div class="workCard">
+            <div class="label">Applied AI</div>
+            <div class="head">AI should reduce uncertainty.</div>
+            <p class="body">Correlation + explanation. If it can’t be defended, it doesn’t ship.</p>
+          </div>
+
+          <div class="workCard">
+            <div class="label">Production constraints</div>
+            <div class="head">Design for missing data and messy humans.</div>
+            <p class="body">Systems that degrade gracefully and stay trustworthy under real telemetry.</p>
+          </div>
+        </div>
+
+        <div class="grid2">
+          <div class="card">
+            <h3>What I’m optimizing for</h3>
+            <ul class="bullets">
+              <li>fewer, higher-confidence findings</li>
+              <li>clear explanations with supporting evidence</li>
+              <li>investigator speed and decision quality</li>
+              <li>systems safe to operate at scale</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>What I share publicly</h3>
+            <p>
+              Short, model-first writing: frameworks, trade-offs, reasoning patterns. No sensitive operational details.
+            </p>
+            <ul class="bullets">
+              <li>mental models and decision frameworks</li>
+              <li>design choices that matter in production</li>
+              <li>behavior as a security primitive</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: CONTACT -->
+    <section id="contact" class="section">
+      <div class="sectionHead">
+        <div>
+          <div class="kicker">Contact</div>
+          <div class="sdesc">
+            If you’re working on security where people are the variable, I’m usually interested.
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <div class="card">
+          <h3>Email</h3>
+          <p style="margin:0;color:var(--muted);font-size:14px;font-weight:650;">
+            <a href="mailto:hello@bhavsar.ai">hello@bhavsar.ai</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      <div>© bhavsar.ai</div>
+      <div style="color:var(--muted);font-weight:650;"><div style="display:flex; flex-wrap:wrap; gap:14px; align-items:center;">
+  <a href="https://kaushalbhavsar.substack.com" target="_blank" rel="noopener">Substack</a>
+  <a href="https://www.linkedin.com/in/kaushalbhavsar" target="_blank" rel="noopener">LinkedIn</a>
+  <a href="https://github.com/kaushalbhavsar" target="_blank" rel="noopener">GitHub</a>
+  <a href="https://youtube.com/@infosecboy" target="_blank" rel="noopener">YouTube</a>
+</div>
+</div>
+    </div>
+
+  </div>
+
+  <script>
+    const { newInstance } = jsPlumbBrowserUI;
+
+    function initPlumb(containerId, connections, opts = {}) {
+      const container = document.getElementById(containerId);
+      const connectorMain = getComputedStyle(document.documentElement)
+        .getPropertyValue('--connector-main').trim();
+      const connectorOutline = getComputedStyle(document.documentElement)
+        .getPropertyValue('--connector-outline').trim();
+
+      const instance = newInstance({
+        container,
+        endpoint: "Blank",
+        connector: { type: "Bezier", options: { curviness: opts.curviness ?? 170 } },
+
+        paintStyle: {
+          stroke: connectorMain,
+          strokeWidth: opts.strokeWidth ?? 5,
+          outlineStroke: connectorOutline,
+          outlineWidth: opts.outlineWidth ?? 10
+        },
+
+        overlays: [
+          {
+            type: "Arrow",
+            options: {
+              location: 0.92,
+              width: opts.arrowSize ?? 18,
+              length: opts.arrowSize ?? 18,
+              foldback: 0.85
+            }
+          }
+        ]
+      });
+
+      container.querySelectorAll(".node,.anchor").forEach(el => {
+        instance.manage(el);
+        instance.setDraggable(el, false);
+      });
+
+      connections.forEach(c => instance.connect(c));
+
+      const ro = new ResizeObserver(() => instance.repaintEverything());
+      ro.observe(container);
+
+      return instance;
+    }
+
+    // Venn pointer arrow
+    initPlumb("venn", [
+      { source: "fromText", target: "toOverlap", anchors: ["Right", "Left"] }
+    ], { curviness: 220, strokeWidth: 6, outlineWidth: 12, arrowSize: 20 });
+
+    // Model diagram
+    initPlumb("diagram1", [
+      { source: "humans", target: "behavior", anchors: ["Bottom", "Top"] },
+      { source: "behavior", target: "reasoning", anchors: ["Bottom", "Top"] },
+      { source: "reasoning", target: "systems", anchors: ["Bottom", "Top"] }
+    ], { curviness: 150 });
+
+    // Signals diagram
+    initPlumb("diagram2", [
+      { source: "logs", target: "modeling", anchors: ["Right", "Left"] },
+      { source: "identity", target: "modeling", anchors: ["Right", "Left"] },
+      { source: "access", target: "modeling", anchors: ["Right", "Left"] },
+      { source: "modeling", target: "signalsOut", anchors: ["Right", "Left"] }
+    ], { curviness: 190 });
+  </script>
+</body>
+</html>
