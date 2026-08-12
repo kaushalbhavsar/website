@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site";
 import { articles } from "@/lib/content/articles";
+import { programs } from "@/lib/content/training";
 import { services } from "@/lib/content/services";
 
 export const dynamic = "force-static";
@@ -19,6 +20,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "about/",
     "research/",
     "careers/",
+    "training/",
+    "training/corporate/",
+    "training/register-interest/",
     "incident/",
     "contact/",
     "privacy/",
@@ -44,6 +48,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(a.publishedAt),
       changeFrequency: "yearly" as const,
       priority: 0.7,
+    })),
+    ...programs.map((p) => ({
+      url: `${base}/training/${p.slug}/`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
     })),
   ];
 }

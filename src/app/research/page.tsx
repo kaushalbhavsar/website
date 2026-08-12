@@ -136,21 +136,16 @@ export default function ResearchPage() {
         </Container>
       </section>
 
-      <section className="py-16">
+      <section className="py-16 bg-surface border-t border-border">
         <Container size="narrow">
           <SectionHeading
-            title="From research to practice"
-            description="Pratikar applies research-derived methods during incident investigation, insider threat analysis and security advisory — not as abstract theory, but as techniques tested against real compromise scenarios."
+            eyebrow="Learn the methodology"
+            title="From research to training"
+            description="Research on insider threats, malware and security analytics also informs Pratikar's professional training."
           />
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Link href="/insights/" className="text-sm text-accent hover:text-accent-hover">
-              Read insights →
-            </Link>
-            <Link href="/services/insider-threat-investigation/" className="text-sm text-accent hover:text-accent-hover">
-              Insider threat investigation →
-            </Link>
-            <Link href="/about/" className="text-sm text-accent hover:text-accent-hover">
-              About Pratikar →
+          <div className="mt-6">
+            <Link href="/training/" className="text-sm text-accent hover:text-accent-hover">
+              Explore Training →
             </Link>
           </div>
         </Container>

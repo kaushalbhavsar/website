@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { siteConfig, footerExpertise, footerResources, footerExternal } from "@/lib/site";
+import { siteConfig, footerExpertise, footerResources, footerTraining, footerExternal } from "@/lib/site";
 import { Container } from "@/components/layout/Container";
 
 export function Footer() {
   return (
     <footer className="border-t border-border bg-surface mt-auto">
       <Container className="py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           <div>
             <Link href="/" className="font-mono text-sm font-semibold tracking-[0.2em] text-text-primary">
               PRATIKAR
@@ -22,6 +22,24 @@ export function Footer() {
             </h3>
             <ul className="space-y-2">
               {footerExpertise.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="text-sm text-text-secondary hover:text-text-primary transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-mono text-xs tracking-widest uppercase text-text-muted mb-4">
+              Training
+            </h3>
+            <ul className="space-y-2">
+              {footerTraining.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}

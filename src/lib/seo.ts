@@ -162,3 +162,35 @@ export function articleSchema(article: {
     articleSection: article.category,
   };
 }
+
+export function courseSchema(program: {
+  title: string;
+  description: string;
+  slug: string;
+  level: string;
+  format: string;
+  status: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    name: program.title,
+    description: program.description,
+    url: `${siteConfig.url}/training/${program.slug}/`,
+    provider: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    educationalLevel: program.level,
+    courseMode: program.format,
+    offers: {
+      "@type": "Offer",
+      availability:
+        program.status === "Open"
+          ? "https://schema.org/InStock"
+          : "https://schema.org/PreOrder",
+      url: `${siteConfig.url}/training/register-interest/`,
+    },
+  };
+}

@@ -20,8 +20,14 @@ export const navigation = [
   { label: "Investigations", href: "/investigations" },
   { label: "Security Advisory", href: "/services/security-advisory" },
   { label: "Expertise", href: "/expertise" },
+  { label: "Training", href: "/training" },
   { label: "Insights", href: "/insights" },
   { label: "About", href: "/about" },
+] as const;
+
+export const footerTraining = [
+  { label: "Professional Training", href: "/training" },
+  { label: "Corporate Training", href: "/training/corporate" },
 ] as const;
 
 export const footerExpertise = [

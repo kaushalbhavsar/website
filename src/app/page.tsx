@@ -164,6 +164,38 @@ export default function HomePage() {
         </Container>
       </section>
 
+      {/* Training Teaser */}
+      <section className="py-20 border-b border-border">
+        <Container>
+          <SectionHeading
+            eyebrow="Training"
+            title="Learn how security incidents are actually investigated."
+            description="Professional cybersecurity training built around systems, evidence, attacks and practical investigation."
+          />
+          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { label: "Security Engineering", href: "/training/practical-cybersecurity-engineering/" },
+              { label: "Incident Investigation", href: "/training/" },
+              { label: "Malware Analysis", href: "/training/register-interest/" },
+              { label: "Insider Threats", href: "/training/register-interest/" },
+            ].map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                className="rounded-lg border border-border bg-surface p-4 text-sm text-text-secondary hover:text-text-primary hover:border-text-muted/30 transition-colors"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+          <div className="mt-8">
+            <Link href="/training/" className="text-sm text-accent hover:text-accent-hover">
+              Explore Training →
+            </Link>
+          </div>
+        </Container>
+      </section>
+
       {/* Incident CTA */}
       <IncidentCTA />
 
