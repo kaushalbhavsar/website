@@ -121,15 +121,13 @@ Pushes to **`main`** trigger `.github/workflows/deploy-ftp.yml`, which builds th
 
 In your GitHub repository, go to **Settings → Secrets and variables → Actions** and add:
 
-| Secret | Value | Required |
-|--------|-------|----------|
-| `FTP_SERVER` | `ftp.pratikar.com` | Yes |
-| `FTP_USERNAME` | `pratikar@pratikar.com` | Yes |
+| Secret | Example value | Required |
+|--------|---------------|----------|
+| `FTP_HOST` | `ftp.pratikar.com` | Yes |
+| `FTP_USER` | `pratikar@pratikar.com` | Yes |
 | `FTP_PASSWORD` | Your FTP password | Yes |
-| `FORM_RECIPIENT_EMAIL` | Email that receives form submissions | Yes |
-| `FORM_FROM_EMAIL` | e.g. `noreply@pratikar.com` | No (defaults to noreply@pratikar.com) |
 
-Optionally create a **production** environment under **Settings → Environments** to restrict who can deploy.
+Form email is configured automatically (`pratikar@pratikar.com`).
 
 ### Manual deploy
 

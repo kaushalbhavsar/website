@@ -8,7 +8,7 @@ set -euo pipefail
 OUT_DIR="${1:-out}"
 CONFIG_PATH="${OUT_DIR}/api/config.php"
 
-RECIPIENT="${FORM_RECIPIENT_EMAIL:?FORM_RECIPIENT_EMAIL is required}"
+RECIPIENT="${FORM_RECIPIENT_EMAIL:-pratikar@pratikar.com}"
 FROM="${FORM_FROM_EMAIL:-noreply@pratikar.com}"
 SITE="${FORM_SITE_NAME:-Pratikar}"
 
