@@ -59,6 +59,9 @@ export function Footer() {
                   >
                     {item.label}
                   </a>
+                  {item.description && (
+                    <p className="text-xs text-text-muted mt-0.5">{item.description}</p>
+                  )}
                 </li>
               ))}
             </ul>

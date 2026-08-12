@@ -34,12 +34,24 @@ export const footerExpertise = [
 
 export const footerResources = [
   { label: "Insights", href: "/insights" },
+  { label: "Research", href: "/research" },
   { label: "Incident First Steps", href: "/incident-response/first-steps" },
   { label: "Technical Case Notes", href: "/cases" },
   { label: "Careers", href: "/careers" },
   { label: "About", href: "/about" },
 ] as const;
 
-export const footerExternal = [
+export type FooterExternalLink = {
+  label: string;
+  href: string;
+  description?: string;
+};
+
+export const footerExternal: FooterExternalLink[] = [
+  {
+    label: "SATARK",
+    href: "https://satark.org",
+    description: "Open-source initiative of Pratikar",
+  },
   { label: "InfoSecQuiz", href: "https://infosecquiz.com" },
-] as const;
+];

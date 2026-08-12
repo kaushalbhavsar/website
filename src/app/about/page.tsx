@@ -52,10 +52,21 @@ export default function AboutPage() {
               Cybersecurity practitioner with expertise in security research, malware investigation,
               insider-threat research, security architecture, software engineering and practical incident analysis.
             </p>
-            <div className="mt-6 flex flex-wrap gap-4">
+            <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+              <Link href="/research/" className="text-sm text-accent hover:text-accent-hover">
+                Research →
+              </Link>
               <Link href="/careers/" className="text-sm text-accent hover:text-accent-hover">
                 Careers →
               </Link>
+              <a
+                href="https://satark.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-accent hover:text-accent-hover"
+              >
+                SATARK →
+              </a>
               <a
                 href="https://infosecquiz.com"
                 target="_blank"
@@ -65,6 +76,9 @@ export default function AboutPage() {
                 InfoSecQuiz →
               </a>
             </div>
+            <p className="mt-4 text-xs text-text-muted">
+              SATARK is an open-source initiative of Pratikar.
+            </p>
           </Card>
         </Container>
       </section>
