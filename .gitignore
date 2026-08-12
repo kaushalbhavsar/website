@@ -33,6 +33,10 @@ yarn-error.log*
 # env files
 .env*
 
+# server config (never commit)
+public/api/config.php
+out/api/config.php
+
 # vercel
 .vercel
 

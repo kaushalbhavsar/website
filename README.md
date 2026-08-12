@@ -21,6 +21,10 @@ npm run build
 
 Upload the contents of **`out/`** to your hosting `public_html` folder. See [DEPLOYMENT.md](./DEPLOYMENT.md) for full instructions.
 
+### Automatic deploy (GitHub Actions)
+
+Push to `main` to deploy via FTP. Configure secrets `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`, and `FORM_RECIPIENT_EMAIL` in the repository settings. See [DEPLOYMENT.md](./DEPLOYMENT.md#github-actions-automatic-ftp-deploy).
+
 ## Configure forms
 
 After upload, create `api/config.php` on the server from `api/config.sample.php` and set your email address. Forms will not send until this is configured.

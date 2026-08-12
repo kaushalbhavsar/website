@@ -1,0 +1,58 @@
+name: Deploy to FTP
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: ftp-deploy-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Build and deploy to pratikar.com
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static site
+        run: npm run build
+
+      - name: Generate form config
+        env:
+          FORM_RECIPIENT_EMAIL: ${{ secrets.FORM_RECIPIENT_EMAIL }}
+          FORM_FROM_EMAIL: ${{ secrets.FORM_FROM_EMAIL }}
+          FORM_SITE_NAME: Pratikar
+        run: bash scripts/generate-form-config.sh out
+
+      - name: Deploy to FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: 21
+          protocol: ftp
+          local-dir: ./out/
+          server-dir: ./
+          state-name: .ftp-deploy-sync-state.json
+          log-level: standard
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**

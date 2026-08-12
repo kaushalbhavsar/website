@@ -112,3 +112,37 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 ## Alternative: subdomain for staging
 
 Upload to a subdomain folder (e.g. `staging.yourdomain.com`) to test before replacing production.
+
+## GitHub Actions (automatic FTP deploy)
+
+Pushes to **`main`** trigger `.github/workflows/deploy-ftp.yml`, which builds the static site and uploads `out/` via FTP.
+
+### One-time setup
+
+In your GitHub repository, go to **Settings → Secrets and variables → Actions** and add:
+
+| Secret | Value | Required |
+|--------|-------|----------|
+| `FTP_SERVER` | `ftp.pratikar.com` | Yes |
+| `FTP_USERNAME` | `pratikar@pratikar.com` | Yes |
+| `FTP_PASSWORD` | Your FTP password | Yes |
+| `FORM_RECIPIENT_EMAIL` | Email that receives form submissions | Yes |
+| `FORM_FROM_EMAIL` | e.g. `noreply@pratikar.com` | No (defaults to noreply@pratikar.com) |
+
+Optionally create a **production** environment under **Settings → Environments** to restrict who can deploy.
+
+### Manual deploy
+
+In GitHub: **Actions → Deploy to FTP → Run workflow**.
+
+### How it works
+
+1. `npm ci` and `npm run build` produce the `out/` folder
+2. `scripts/generate-form-config.sh` writes `out/api/config.php` from secrets (never committed)
+3. [FTP-Deploy-Action](https://github.com/SamKirkland/FTP-Deploy-Action) syncs only changed files
+
+The workflow uses `dangerous-clean-slate: false` and tracks deployed files in `.ftp-deploy-sync-state.json` on the server. It does **not** wipe unrelated folders (other addon domains on the same hosting account).
+
+### First deploy note
+
+The FTP account root may still contain old files (e.g. WordPress `index.php`). After the first successful deploy, verify https://pratikar.com loads the new site. Remove obsolete root files manually in cPanel if the old site still appears.
