@@ -108,6 +108,24 @@ export default function CareersPage() {
       <section className="py-16 bg-surface border-t border-border">
         <Container size="narrow">
           <SectionHeading
+            eyebrow="Open Source"
+            title="SATARK"
+            description="An open-source initiative of Pratikar — security analytics framework for explainable detection pipelines."
+          />
+          <a
+            href="https://satark.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex items-center gap-2 text-accent hover:text-accent-hover transition-colors text-sm"
+          >
+            Visit satark.org →
+          </a>
+        </Container>
+      </section>
+
+      <section className="py-16 border-t border-border">
+        <Container size="narrow">
+          <SectionHeading
             eyebrow="Practice"
             title="Test your security knowledge"
             description="InfoSecQuiz is an independent quiz platform for cybersecurity concepts, incident response and technical security topics."
