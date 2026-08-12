@@ -75,6 +75,14 @@ npm run build
 
 Re-upload the contents of `out/` (or use FTP sync). You do not need Node.js on the server.
 
+### Optional: create a zip for upload
+
+```bash
+npm run pack
+```
+
+This builds the site and creates **`pratikar-deploy.zip`** in the project root. Upload and extract in `public_html` via cPanel File Manager.
+
 ## HTTPS
 
 Uncomment the HTTPS redirect lines in `.htaccess` once SSL is active:

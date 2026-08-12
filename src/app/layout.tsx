@@ -20,11 +20,16 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-export const metadata: Metadata = createMetadata({
-  title: siteConfig.name,
-  description: siteConfig.description,
-  path: "/",
-});
+export const metadata: Metadata = {
+  ...createMetadata({
+    title: siteConfig.name,
+    description: siteConfig.description,
+    path: "/",
+  }),
+  icons: {
+    icon: "/favicon.svg",
+  },
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

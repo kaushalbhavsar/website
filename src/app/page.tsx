@@ -12,6 +12,7 @@ import { Card } from "@/components/ui/Card";
 import { services } from "@/lib/content/services";
 import { articles } from "@/lib/content/articles";
 import { fieldNotes } from "@/lib/content/cases";
+import { AudienceSection } from "@/components/conversion/AudienceSection";
 
 const expertiseMatrix = [
   {
@@ -105,6 +106,8 @@ export default function HomePage() {
           </div>
         </Container>
       </section>
+
+      <AudienceSection />
 
       {/* Methodology */}
       <section className="py-20 bg-surface border-y border-border">
