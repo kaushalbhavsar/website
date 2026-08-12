@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { trackEvent } from "@/lib/analytics";
+import { parseFormResponse } from "@/lib/parseFormResponse";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
@@ -30,7 +31,7 @@ export function IncidentIntakeForm({ className }: IncidentIntakeFormProps) {
     const formData = new FormData(form);
 
     try {
-      const res = await fetch("/api/incident.php", {
+      const res = await fetch("/api/incident-request.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -47,7 +48,7 @@ export function IncidentIntakeForm({ className }: IncidentIntakeFormProps) {
         }),
       });
 
-      const data = await res.json();
+      const data = await parseFormResponse(res);
       if (!res.ok || !data.success) {
         throw new Error(data.error || "Submission failed");
       }

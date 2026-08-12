@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { trackEvent } from "@/lib/analytics";
+import { parseFormResponse } from "@/lib/parseFormResponse";
 import { Button } from "@/components/ui/Button";
 import { programs, trainingCategories } from "@/lib/content/training";
 import { cn } from "@/lib/utils";
@@ -55,7 +56,7 @@ export function TrainingInterestForm({ className, defaultProgram }: TrainingInte
         }),
       });
 
-      const data = await res.json();
+      const data = await parseFormResponse(res);
       if (!res.ok || !data.success) {
         throw new Error(data.error || "Submission failed");
       }
