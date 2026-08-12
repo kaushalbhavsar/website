@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { trackEvent } from "@/lib/analytics";
+import { parseFormResponse } from "@/lib/parseFormResponse";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
@@ -36,7 +37,7 @@ export function ContactForm({ className }: ContactFormProps) {
         }),
       });
 
-      const data = await res.json();
+      const data = await parseFormResponse(res);
       if (!res.ok || !data.success) {
         throw new Error(data.error || "Submission failed");
       }

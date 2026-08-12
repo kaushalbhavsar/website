@@ -3,6 +3,25 @@ declare(strict_types=1);
 
 header('Content-Type: application/json; charset=utf-8');
 
+register_shutdown_function(function (): void {
+    $error = error_get_last();
+    if ($error === null) {
+        return;
+    }
+
+    $fatal = [E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR, E_USER_ERROR];
+    if (!in_array($error['type'], $fatal, true) || headers_sent()) {
+        return;
+    }
+
+    http_response_code(500);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode([
+        'success' => false,
+        'error' => 'A server error occurred. Please email us directly.',
+    ]);
+});
+
 function respond(int $code, array $payload): void
 {
     http_response_code($code);
