@@ -33,7 +33,7 @@ jobs:
 
       - name: Generate form config
         env:
-          FORM_RECIPIENT_EMAIL: pratikar@pratikar.com
+          FORM_RECIPIENT_EMAIL: ${{ secrets.FORM_RECIPIENT_EMAIL }}
           FORM_FROM_EMAIL: noreply@pratikar.com
           FORM_SITE_NAME: Pratikar
         run: bash scripts/generate-form-config.sh out

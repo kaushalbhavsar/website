@@ -126,8 +126,9 @@ In your GitHub repository, go to **Settings → Secrets and variables → Action
 | `FTP_HOST` | `ftp.pratikar.com` | Yes |
 | `FTP_USER` | `pratikar@pratikar.com` | Yes |
 | `FTP_PASSWORD` | Your FTP password | Yes |
+| `FORM_RECIPIENT_EMAIL` | Email that receives form submissions | Yes |
 
-Form email is configured automatically (`pratikar@pratikar.com`).
+`FORM_FROM_EMAIL` defaults to `noreply@pratikar.com` if not set.
 
 ### Manual deploy
 

@@ -23,7 +23,7 @@ Upload the contents of **`out/`** to your hosting `public_html` folder. See [DEP
 
 ### Automatic deploy (GitHub Actions)
 
-Push to `main` to deploy via FTP. Configure secrets `FTP_HOST`, `FTP_USER`, and `FTP_PASSWORD` in the repository settings. See [DEPLOYMENT.md](./DEPLOYMENT.md#github-actions-automatic-ftp-deploy).
+Push to `main` to deploy via FTP. Configure secrets `FTP_HOST`, `FTP_USER`, `FTP_PASSWORD`, and `FORM_RECIPIENT_EMAIL` in the repository settings. See [DEPLOYMENT.md](./DEPLOYMENT.md#github-actions-automatic-ftp-deploy).
 
 ## Configure forms
 
