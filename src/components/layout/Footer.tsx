@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { siteConfig, footerExpertise, footerResources } from "@/lib/site";
+import { siteConfig, footerExpertise, footerResources, footerExternal } from "@/lib/site";
 import { Container } from "@/components/layout/Container";
 
 export function Footer() {
@@ -47,6 +47,18 @@ export function Footer() {
                   >
                     {item.label}
                   </Link>
+                </li>
+              ))}
+              {footerExternal.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-text-secondary hover:text-text-primary transition-colors"
+                  >
+                    {item.label}
+                  </a>
                 </li>
               ))}
             </ul>

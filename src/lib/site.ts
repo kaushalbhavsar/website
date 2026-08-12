@@ -36,5 +36,10 @@ export const footerResources = [
   { label: "Insights", href: "/insights" },
   { label: "Incident First Steps", href: "/incident-response/first-steps" },
   { label: "Technical Case Notes", href: "/cases" },
+  { label: "Careers", href: "/careers" },
   { label: "About", href: "/about" },
+] as const;
+
+export const footerExternal = [
+  { label: "InfoSecQuiz", href: "https://infosecquiz.com" },
 ] as const;

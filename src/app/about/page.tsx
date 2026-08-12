@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { createMetadata } from "@/lib/seo";
 import { PageHero } from "@/components/hero/PageHero";
 import { Container } from "@/components/layout/Container";
@@ -52,10 +53,17 @@ export default function AboutPage() {
               insider-threat research, security architecture, software engineering and practical incident analysis.
             </p>
             <div className="mt-6 flex flex-wrap gap-4">
-              <span className="text-sm text-text-muted">Research — coming soon</span>
-              <span className="text-sm text-text-muted">Publications — coming soon</span>
-              <span className="text-sm text-text-muted">LinkedIn — coming soon</span>
-              <span className="text-sm text-text-muted">GitHub — coming soon</span>
+              <Link href="/careers/" className="text-sm text-accent hover:text-accent-hover">
+                Careers →
+              </Link>
+              <a
+                href="https://infosecquiz.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-accent hover:text-accent-hover"
+              >
+                InfoSecQuiz →
+              </a>
             </div>
           </Card>
         </Container>
