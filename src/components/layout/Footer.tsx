@@ -124,7 +124,7 @@ export function Footer() {
             <Link href="/terms" className="text-xs text-text-muted hover:text-text-secondary transition-colors">
               Terms
             </Link>
-            <Link href="/security" className="text-xs text-text-muted hover:text-text-secondary transition-colors">
+            <Link href="/security/" className="text-xs text-text-muted hover:text-text-secondary transition-colors">
               Responsible Disclosure
             </Link>
           </div>

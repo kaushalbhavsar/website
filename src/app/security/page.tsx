@@ -22,13 +22,19 @@ export default function SecurityPage() {
           <div className="space-y-6 text-text-secondary text-sm leading-relaxed">
             <h2 className="text-lg font-semibold text-text-primary">Reporting</h2>
             <p>
-              Please report security vulnerabilities through our verified security contact email.
-              A security contact address will be published here once verified.
+              Report security vulnerabilities to{" "}
+              <a href="mailto:security@pratikar.com" className="text-accent hover:text-accent-hover underline underline-offset-2">
+                security@pratikar.com
+              </a>
+              .
             </p>
             <p>
               Machine-readable policy:{" "}
-              <a href="/.well-known/security.txt" className="text-accent hover:text-accent-hover underline underline-offset-2">
-                /.well-known/security.txt
+              <a
+                href="https://pratikar.com/.well-known/security.txt"
+                className="text-accent hover:text-accent-hover underline underline-offset-2"
+              >
+                security.txt
               </a>
             </p>
 

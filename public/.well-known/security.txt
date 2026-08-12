@@ -3,5 +3,3 @@ Expires: 2027-12-31T23:59:59.000Z
 Preferred-Languages: en
 Canonical: https://pratikar.com/.well-known/security.txt
 Policy: https://pratikar.com/security/
-
-# Replace the Contact email above with your verified security contact address.
