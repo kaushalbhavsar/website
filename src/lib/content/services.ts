@@ -158,7 +158,7 @@ export const services: Service[] = [
     faqs: [
       {
         question: "Can you analyse malware samples we provide?",
-        answer: "Yes. Secure transfer arrangements can be established for sample submission. Do not submit samples through public contact forms.",
+        answer: "Yes. Submit samples through the restricted case workspace in the Incident Response Portal after starting an assessment. Do not email malware samples or upload them to public pages.",
       },
       {
         question: "Is malware always the primary incident?",

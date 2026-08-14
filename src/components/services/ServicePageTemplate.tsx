@@ -7,6 +7,7 @@ import { ContactCTA } from "@/components/conversion/ContactCTA";
 import { InsightCard } from "@/components/content/InsightCard";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { faqSchema, breadcrumbSchema } from "@/lib/seo";
+import { portalAssessmentForService } from "@/lib/portal";
 import type { Service } from "@/lib/content/services";
 import { articles } from "@/lib/content/articles";
 
@@ -31,13 +32,10 @@ export function ServicePageTemplate({ service }: { service: Service }) {
     )
     .slice(0, 3);
 
-  const ctaHref = service.slug.includes("advisory") || service.slug.includes("architecture")
-    ? "/contact/"
-    : "/incident/";
-
+  const ctaHref = portalAssessmentForService(service.slug);
   const ctaLabel = service.slug.includes("advisory") || service.slug.includes("architecture")
-    ? "Request a Security Review"
-    : "Get Incident Help";
+    ? "Start an Assessment"
+    : "Start Incident Assessment";
 
   return (
     <>

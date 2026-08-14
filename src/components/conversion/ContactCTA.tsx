@@ -1,6 +1,7 @@
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { portal } from "@/lib/portal";
 
 type ContactCTAProps = {
   title?: string;
@@ -13,11 +14,11 @@ type ContactCTAProps = {
 
 export function ContactCTA({
   title = "Need technical guidance?",
-  description = "Whether you are dealing with an active incident or planning security improvements, we can help you understand the technical situation.",
-  primaryLabel = "Get Incident Help",
-  primaryHref = "/incident",
-  secondaryLabel = "General Enquiry",
-  secondaryHref = "/contact",
+  description = "Whether you are dealing with an active incident or planning security improvements, start in the incident response portal so context, evidence and decisions stay in one place.",
+  primaryLabel = "Start Incident Assessment",
+  primaryHref = portal.assessment,
+  secondaryLabel = "Sign in to a case",
+  secondaryHref = portal.auth,
 }: ContactCTAProps) {
   return (
     <section className="py-20 border-t border-border">

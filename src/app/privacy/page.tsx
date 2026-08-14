@@ -17,30 +17,37 @@ export default function PrivacyPage() {
           <div className="space-y-6 text-text-secondary text-sm leading-relaxed">
             <p>
               Pratikar respects the confidentiality of incident-related enquiries. Information submitted through
-              contact or incident forms is used solely to respond to your request.
+              the Incident Response Portal is used to triage, investigate and respond to your case.
             </p>
             <h2 className="text-lg font-semibold text-text-primary pt-4">Data collection</h2>
             <p>
-              We collect only the information you provide: name, email, organization, phone (optional),
-              and message content. We do not use invasive tracking or third-party analytics that capture
-              form contents.
+              The portal collects the information you provide during assessment and case work: contact details,
+              incident description, and any evidence you choose to upload. This website does not use invasive
+              tracking or third-party analytics that capture form contents.
             </p>
             <h2 className="text-lg font-semibold text-text-primary pt-4">Sensitive information</h2>
             <p>
-              Do not submit passwords, authentication tokens, malware samples or confidential evidence
-              through web forms. Secure transfer arrangements can be established separately.
+              Do not submit passwords or authentication tokens through public pages. Evidence such as logs,
+              screenshots and documents should be shared inside the restricted case workspace in the portal,
+              where files are tracked with integrity metadata.
             </p>
             <h2 className="text-lg font-semibold text-text-primary pt-4">Retention</h2>
             <p>
-              Enquiry data is retained only as long as necessary to respond and maintain business records.
-              Incident details are handled with appropriate confidentiality.
+              Case data is retained only as long as necessary to respond, complete the investigation and
+              maintain business records. Incident details are handled with appropriate confidentiality
+              and are only made available to authorised people working on your case.
             </p>
             <h2 className="text-lg font-semibold text-text-primary pt-4">Contact</h2>
             <p>
-              For privacy-related questions, contact us through the{" "}
-              <a href="/contact/" className="text-accent hover:text-accent-hover underline underline-offset-2">
-                contact form
-              </a>.
+              For privacy-related questions, start a request in the{" "}
+              <a href="https://portal.pratikar.com/assessment?category=other" className="text-accent hover:text-accent-hover underline underline-offset-2">
+                Incident Response Portal
+              </a>
+              {" "}or email{" "}
+              <a href="mailto:security@pratikar.com" className="text-accent hover:text-accent-hover underline underline-offset-2">
+                security@pratikar.com
+              </a>
+              .
             </p>
           </div>
         </Container>

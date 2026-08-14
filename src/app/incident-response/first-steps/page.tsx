@@ -3,6 +3,7 @@ import { PageHero } from "@/components/hero/PageHero";
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
+import { portal } from "@/lib/portal";
 
 export const metadata = createMetadata({
   title: "Incident First Steps",
@@ -59,7 +60,7 @@ export default function FirstStepsPage() {
           </div>
 
           <div className="mt-12 text-center">
-            <Button href="/incident/" size="lg">Request Incident Assistance</Button>
+            <Button href={portal.assessment} size="lg">Start Incident Assessment</Button>
           </div>
 
           <p className="mt-8 text-xs text-text-muted text-center leading-relaxed">

@@ -53,9 +53,14 @@ export function Button({
   );
 
   if (href) {
-    if (external) {
+    const absolute = /^https?:\/\//i.test(href);
+    if (absolute || external) {
       return (
-        <a href={href} className={classes} target="_blank" rel="noopener noreferrer">
+        <a
+          href={href}
+          className={classes}
+          {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        >
           {children}
         </a>
       );

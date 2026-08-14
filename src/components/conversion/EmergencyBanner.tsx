@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { X } from "lucide-react";
 import { Container } from "@/components/layout/Container";
+import { portal } from "@/lib/portal";
 
 const STORAGE_KEY = "pratikar-emergency-banner-dismissed";
 
@@ -30,12 +30,12 @@ export function EmergencyBanner() {
         <div className="flex items-center justify-between py-2.5 gap-4">
           <p className="text-sm text-text-secondary">
             Need help with an active security incident?{" "}
-            <Link
-              href="/incident"
+            <a
+              href={portal.assessment}
               className="text-accent hover:text-accent-hover underline underline-offset-2 transition-colors"
             >
-              Request assistance
-            </Link>
+              Start an assessment
+            </a>
           </p>
           <button
             type="button"
