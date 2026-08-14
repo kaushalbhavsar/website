@@ -16,7 +16,7 @@ export default function CasesPage() {
       <PageHero
         eyebrow="Technical Case Notes"
         title="Investigation scenarios and lessons"
-        description="These notes describe common investigation patterns and lessons. They are hypothetical scenarios unless explicitly marked as verified anonymised cases."
+        description="These notes describe common investigation patterns and lessons. Hypothetical scenarios sit alongside verified anonymised cases. Identifying details are removed. They are not customer case studies."
       />
 
       <section className="py-16">
