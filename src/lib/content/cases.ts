@@ -143,6 +143,105 @@ Upgrade unsupported operating systems. Application allow-listing reduces the val
 None of those recommendations require identifying the organisation. They are the same weaknesses this investigation keeps finding when ransomware is treated as a malware event instead of an access event.`,
   },
   {
+    slug: "exposed-rdp-and-sql-brute-force",
+    title: "Brute Force Against Exposed Remote Desktop and SQL Server",
+    category: "Investigations",
+    status: "verified",
+    publishedAt: "2026-08-14",
+    readingTime: 6,
+    summary:
+      "Event logs showed concurrent brute-force attempts against internet-reachable remote desktop and a database server, plus a successful logon by a little-used account from an unrecognised workstation. The finding was not a finished forensic case — it was enough to show that two administrative services should never have been facing the internet.",
+    timeline: [
+      {
+        time: "Earlier in the window",
+        event:
+          "Failed SQL Server logins arrive from multiple overseas networks. The database port is reachable from the internet.",
+        label: "EVIDENCE / AUTH",
+      },
+      {
+        time: "Later in the window",
+        event:
+          "Failed Windows logons appear from several countries in a single day, consistent with opportunistic remote-desktop brute force rather than one operator.",
+        label: "EVIDENCE / AUTH",
+      },
+      {
+        time: "Same day",
+        event:
+          "A little-used account completes a successful interactive logon from a workstation with a default, unmanaged-looking computer name. The session lasts about twenty minutes.",
+        label: "EVIDENCE / AUTH",
+      },
+      {
+        time: "After review",
+        event:
+          "Log analysis can show the exposure and the suspicious success. It cannot, by itself, prove whether that account was still legitimate — that requires the organisation to validate who owns it.",
+        label: "INVESTIGATION LIMIT",
+      },
+    ],
+    relatedInsightSlugs: [
+      "understanding-account-takeover-evidence",
+      "security-architecture-mistakes-that-make-investigations-harder",
+      "building-a-cybersecurity-incident-timeline",
+    ],
+    relatedServiceSlugs: [
+      "incident-investigation",
+      "expert-reports",
+      "security-architecture-review",
+    ],
+    body: `## What was reported
+
+An organisation asked for a review of Windows event logs. There was no confirmed ransomware, no encrypted files, and no instruction to image disks. The question was narrower: what do the authentication records actually show?
+
+That kind of engagement is common. Logs are already there. A full forensic examination is not always authorised yet. The work is to extract what the logs can support — and to say clearly what they cannot.
+
+## Scope
+
+The review covered security and SQL Server login events on a Windows server. Two services were in view: remote desktop and the database engine. No malware samples were collected. No claim was made that every host in the environment had been examined.
+
+## What the evidence showed
+
+Failed Windows logons arrived from several countries in a short window, including both domestic and overseas networks. The pattern is what opportunistic brute force against an internet-reachable remote desktop looks like: many sources, no single operator, no need for a custom exploit. The login prompt was simply reachable.
+
+SQL Server told the same story on a different port. Failed database logins came from multiple overseas networks days before the Windows failures clustered. The database was not only listening internally. It was being guessed at from the public internet.
+
+One successful logon stood apart from the failures. An account that looked like a leftover service identity — the sort of name used for file transfer, not for a person — signed in interactively from a workstation whose computer name looked like a default Windows install, not a managed asset. The session lasted about twenty minutes, then ended.
+
+That success is the finding that needs a human answer. Logs can show that the account exists, that it authenticated, and that the workstation name does not look like the rest of the estate. They cannot show whether the account was still supposed to exist, whether anyone in the organisation still used it, or whether the session was an attacker who had already guessed the password. The organisation had to confirm that, or disable the account until they could.
+
+## Root cause
+
+Two administrative surfaces were facing the internet: remote desktop and SQL Server. Once those ports are reachable, brute force is not a sophisticated campaign. It is background traffic. The failed logins from many geographies are what that traffic looks like when anyone bothers to read the logs.
+
+The suspicious successful logon is a separate, sharper problem. Unused or poorly named accounts remain valid credentials. If nobody can say who owns them, investigators cannot say whether a twenty-minute session was maintenance or compromise. Shared, forgotten, and service accounts create that ambiguity on purpose, even when nobody intended to.
+
+## What log analysis could not do
+
+This review was not a forensic examination of the server. It did not reconstruct every process, every file drop, or every outbound connection. The recommendations assumed the log entries were complete enough to act on. If they were not — if logging was incomplete, clocks were wrong, or the interesting activity happened on a different host — disk-level investigation would still be required.
+
+That limit is worth stating in the report. Treating a log review as a closed incident is how organisations miss the payload that never generated a failed login.
+
+## Lessons
+
+Failed logins from many countries in one day are usually a signal that a service is on the internet, not that a named adversary has chosen the organisation.
+
+A successful logon by an account nobody recognises is a finding, not a footnote. Brute-force noise is easy to scroll past. The session that worked is the one that needs an owner.
+
+Exposing SQL Server to the world is the same class of mistake as exposing remote desktop. Attackers do not need to pick one. The logs in this case showed both.
+
+Blacklisting addresses after they have already reached the login prompt is a chase. Allowing only known networks — or, better, not offering remote desktop and database ports to the internet at all — is the control that matches the evidence.
+
+Log analysis answers what the logs recorded. Investigation answers whether that is the whole incident.
+
+## Recommendations that still apply
+
+Do not publish remote desktop or database ports to the internet. If remote administration is required, put it behind a VPN or an equivalent controlled path. If a narrow exception is unavoidable, restrict it to known addresses — knowing that this only works when those addresses are stable.
+
+Inventory accounts the way you inventory servers. Service identities used for file transfer should not have interactive logon. Accounts that nobody can claim should be disabled.
+
+Alert on brute-force volume and on success after failure, especially from networks that do not match how the organisation actually works. Retain the logs long enough that a review like this still has something to read.
+
+If the logs raise a successful session that cannot be explained, that is the point to preserve the host and widen the investigation — not the point to assume the review is finished.`,
+  },
+  {
     slug: "compromised-web-application",
     title: "Compromised Web Application",
     category: "Web Security",
@@ -200,6 +299,7 @@ export const fieldNotes = [
   "A web shell on a server often indicates broader compromise — not an isolated defacement.",
   "A machine that has not been restarted is not a clean machine.",
   "Tens of thousands of failed logins are evidence, not noise.",
+  "A successful login by an account nobody recognises is a finding, not a footnote.",
 ];
 
 export function getCaseBySlug(slug: string): CaseNote | undefined {
