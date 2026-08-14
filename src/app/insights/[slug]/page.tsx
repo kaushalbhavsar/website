@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/Badge";
 import { InsightCard } from "@/components/content/InsightCard";
 import { articles, getArticleBySlug, getRelatedArticles } from "@/lib/content/articles";
 import { getTrainingBridgeForCategory } from "@/lib/content/training";
-import { portal } from "@/lib/portal";
+import { portal, portalCta } from "@/lib/portal";
 
 export function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }));
@@ -77,7 +77,7 @@ export default async function InsightArticlePage({ params }: Props) {
 
           <div className="mt-12 pt-8 border-t border-border space-y-4">
             <a href={portal.assessment} className="text-accent hover:text-accent-hover text-sm block">
-              Need incident assistance? Start an assessment →
+              {portalCta.report} →
             </a>
             {trainingBridge && (
               <p className="text-sm text-text-muted">

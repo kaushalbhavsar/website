@@ -43,7 +43,6 @@ export default function InvestigationsPage() {
       <ContactCTA
         title="Discuss a technical case"
         description="Start in the portal so investigation context, evidence and findings stay in one restricted case workspace."
-        primaryLabel="Start a Forensics Assessment"
         primaryHref={portalAssessment("digital_forensics")}
       />
     </>

@@ -4,6 +4,12 @@ export const portal = {
   auth: "https://portal.pratikar.com/auth",
 } as const;
 
+export const portalCta = {
+  report: "I Need This Investigated",
+  signIn: "Sign in to a case",
+  existingCase: "I already have a case",
+} as const;
+
 export type PortalCategory =
   | "website_compromise"
   | "malware_ransomware"

@@ -13,7 +13,7 @@ import { services } from "@/lib/content/services";
 import { articles } from "@/lib/content/articles";
 import { fieldNotes } from "@/lib/content/cases";
 import { AudienceSection } from "@/components/conversion/AudienceSection";
-import { portal } from "@/lib/portal";
+import { portal, portalCta } from "@/lib/portal";
 
 const expertiseMatrix = [
   {
@@ -81,7 +81,7 @@ export default function HomePage() {
             <InvestigationSteps />
           </div>
           <div className="mt-10 text-center">
-            <Button href={portal.assessment} size="lg">Start Incident Assessment</Button>
+            <Button href={portal.assessment} size="lg">{portalCta.report}</Button>
           </div>
         </Container>
       </section>

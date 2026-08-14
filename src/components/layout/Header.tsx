@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { navigation } from "@/lib/site";
-import { portal } from "@/lib/portal";
+import { portal, portalCta } from "@/lib/portal";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/layout/Container";
 import { cn } from "@/lib/utils";
@@ -67,7 +67,7 @@ export function Header() {
               Portal
             </a>
             <Button href={portal.assessment} size="sm">
-              Start Assessment
+              {portalCta.report}
             </Button>
           </div>
 
@@ -113,7 +113,7 @@ export function Header() {
               </a>
               <div className="pt-6">
                 <Button href={portal.assessment} className="w-full">
-                  Start Assessment
+                  {portalCta.report}
                 </Button>
               </div>
             </nav>

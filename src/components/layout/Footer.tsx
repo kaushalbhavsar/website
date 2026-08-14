@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { siteConfig, footerExpertise, footerResources, footerTraining, footerExternal } from "@/lib/site";
-import { portal } from "@/lib/portal";
+import { portal, portalCta } from "@/lib/portal";
 import { Container } from "@/components/layout/Container";
 
 export function Footer() {
@@ -96,7 +96,7 @@ export function Footer() {
                   href={portal.assessment}
                   className="text-sm text-text-secondary hover:text-text-primary transition-colors"
                 >
-                  Start incident assessment
+                  {portalCta.report}
                 </a>
               </li>
               <li>

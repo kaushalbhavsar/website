@@ -1,6 +1,6 @@
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
-import { portal } from "@/lib/portal";
+import { portal, portalCta } from "@/lib/portal";
 
 export default function NotFound() {
   return (
@@ -16,7 +16,7 @@ export default function NotFound() {
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button href="/">Return Home</Button>
           <a href={portal.assessment} className="text-sm text-accent hover:text-accent-hover">
-            Need incident help?
+            {portalCta.report} →
           </a>
         </div>
       </Container>

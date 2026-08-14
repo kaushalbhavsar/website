@@ -1,7 +1,7 @@
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { portal } from "@/lib/portal";
+import { portal, portalCta } from "@/lib/portal";
 
 type ContactCTAProps = {
   title?: string;
@@ -15,9 +15,9 @@ type ContactCTAProps = {
 export function ContactCTA({
   title = "Need technical guidance?",
   description = "Whether you are dealing with an active incident or planning security improvements, start in the incident response portal so context, evidence and decisions stay in one place.",
-  primaryLabel = "Start Incident Assessment",
+  primaryLabel = portalCta.report,
   primaryHref = portal.assessment,
-  secondaryLabel = "Sign in to a case",
+  secondaryLabel = portalCta.signIn,
   secondaryHref = portal.auth,
 }: ContactCTAProps) {
   return (

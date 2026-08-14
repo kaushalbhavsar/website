@@ -24,7 +24,7 @@ export default function ContactPage() {
           <div className="mb-10 p-4 rounded border border-border bg-surface-secondary text-sm text-text-secondary">
             <p>Based in {siteConfig.location.country}. Remote technical engagements worldwide.</p>
             <p className="mt-2">
-              If you are not sure how to classify the situation, start the assessment anyway and choose Other / Not sure.
+              If you are not sure how to classify the situation, begin anyway and choose Other / Not sure.
             </p>
           </div>
           <PortalHandoff showTrainingLink />

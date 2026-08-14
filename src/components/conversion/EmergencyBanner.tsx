@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import { Container } from "@/components/layout/Container";
-import { portal } from "@/lib/portal";
+import { portal, portalCta } from "@/lib/portal";
 
 const STORAGE_KEY = "pratikar-emergency-banner-dismissed";
 
@@ -34,7 +34,7 @@ export function EmergencyBanner() {
               href={portal.assessment}
               className="text-accent hover:text-accent-hover underline underline-offset-2 transition-colors"
             >
-              Start an assessment
+              {portalCta.report}
             </a>
           </p>
           <button

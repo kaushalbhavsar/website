@@ -1,4 +1,4 @@
-import { portal } from "@/lib/portal";
+import { portal, portalCta } from "@/lib/portal";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
@@ -45,10 +45,10 @@ export function PortalHandoff({ className, showTrainingLink = false }: PortalHan
 
       <div className="flex flex-col sm:flex-row gap-4">
         <Button href={portal.assessment} size="lg">
-          Start Incident Assessment
+          {portalCta.report}
         </Button>
         <Button href={portal.auth} variant="outline" size="lg">
-          I already have a case
+          {portalCta.existingCase}
         </Button>
       </div>
 

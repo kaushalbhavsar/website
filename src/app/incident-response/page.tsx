@@ -53,7 +53,7 @@ export default function IncidentResponsePage() {
       <IncidentCTA variant="compact" />
       <ContactCTA
         title="Start incident response"
-        description="Begin with a short assessment in the portal. No account is required to describe what happened."
+        description="Describe what happened in the portal. No account is required to begin."
       />
     </>
   );
