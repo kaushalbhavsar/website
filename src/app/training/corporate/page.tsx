@@ -63,7 +63,7 @@ export default function CorporateTrainingPage() {
 
       <section className="py-16">
         <Container size="narrow" className="text-center">
-          <Button href="/contact/" size="lg">Discuss Corporate Training</Button>
+          <Button href="/training/register-interest/" size="lg">Discuss Corporate Training</Button>
           <p className="mt-4">
             <Button href="/training/register-interest/" variant="ghost" size="sm">
               Register Interest

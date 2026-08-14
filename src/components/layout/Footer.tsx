@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { siteConfig, footerExpertise, footerResources, footerTraining, footerExternal } from "@/lib/site";
+import { portal } from "@/lib/portal";
 import { Container } from "@/components/layout/Container";
 
 export function Footer() {
@@ -87,23 +88,39 @@ export function Footer() {
 
           <div>
             <h3 className="font-mono text-xs tracking-widest uppercase text-text-muted mb-4">
-              Contact
+              Portal
             </h3>
             <ul className="space-y-2">
               <li>
-                <Link
-                  href="/incident"
+                <a
+                  href={portal.assessment}
                   className="text-sm text-text-secondary hover:text-text-primary transition-colors"
                 >
-                  Request Assistance
-                </Link>
+                  Start incident assessment
+                </a>
+              </li>
+              <li>
+                <a
+                  href={portal.auth}
+                  className="text-sm text-text-secondary hover:text-text-primary transition-colors"
+                >
+                  Sign in to a case
+                </a>
+              </li>
+              <li>
+                <a
+                  href={portal.origin}
+                  className="text-sm text-text-secondary hover:text-text-primary transition-colors"
+                >
+                  Incident Response Portal
+                </a>
               </li>
               <li>
                 <Link
-                  href="/contact"
+                  href="/training/register-interest/"
                   className="text-sm text-text-secondary hover:text-text-primary transition-colors"
                 >
-                  General Enquiry
+                  Training interest
                 </Link>
               </li>
             </ul>

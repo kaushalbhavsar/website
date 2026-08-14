@@ -1,6 +1,7 @@
 import { Container } from "@/components/layout/Container";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
+import { portal } from "@/lib/portal";
 import { EvidenceGraph } from "@/components/investigation/EvidenceGraph";
 
 export function IncidentHero() {
@@ -20,7 +21,7 @@ export function IncidentHero() {
               recover safely and understand the weaknesses that allowed the incident to occur.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <Button href="/incident/" size="lg">Get Incident Help</Button>
+              <Button href={portal.assessment} size="lg">Start Incident Assessment</Button>
               <Button href="/expertise/" variant="outline" size="lg">Explore Our Expertise</Button>
             </div>
             <p className="mt-6 font-mono text-xs text-text-muted tracking-wide">

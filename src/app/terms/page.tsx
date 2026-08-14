@@ -22,8 +22,9 @@ export default function TermsPage() {
             </p>
             <h2 className="text-lg font-semibold text-text-primary pt-4">No emergency service</h2>
             <p>
-              Submitting a form does not establish an attorney-client or formal engagement relationship.
-              For active incidents requiring immediate response, clearly indicate urgency in your submission.
+              Starting an assessment in the Incident Response Portal does not establish an attorney-client
+              or formal engagement relationship. Preliminary assessments are triage input only and do not
+              constitute a forensic conclusion.
             </p>
             <h2 className="text-lg font-semibold text-text-primary pt-4">General guidance</h2>
             <p>

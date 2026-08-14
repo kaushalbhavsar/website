@@ -2,6 +2,7 @@ import { createMetadata } from "@/lib/seo";
 import { PageHero } from "@/components/hero/PageHero";
 import { Container } from "@/components/layout/Container";
 import { ContactCTA } from "@/components/conversion/ContactCTA";
+import { portal, portalAssessment } from "@/lib/portal";
 
 export const metadata = createMetadata({
   title: "Expertise",
@@ -66,10 +67,10 @@ export default function ExpertisePage() {
 
       <ContactCTA
         title="Need this expertise?"
-        primaryLabel="Request a Security Review"
-        primaryHref="/contact/"
-        secondaryLabel="Get Incident Help"
-        secondaryHref="/incident/"
+        primaryLabel="Start an Assessment"
+        primaryHref={portalAssessment("other")}
+        secondaryLabel="Start Incident Assessment"
+        secondaryHref={portal.assessment}
       />
     </>
   );

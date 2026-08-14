@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { navigation } from "@/lib/site";
+import { portal } from "@/lib/portal";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/layout/Container";
 import { cn } from "@/lib/utils";
@@ -59,14 +60,14 @@ export function Header() {
           </nav>
 
           <div className="hidden lg:flex items-center gap-4">
-            <Link
-              href="/contact"
+            <a
+              href={portal.origin}
               className="text-sm text-text-muted hover:text-text-secondary transition-colors"
             >
-              Contact
-            </Link>
-            <Button href="/incident" size="sm">
-              Get Incident Help
+              Portal
+            </a>
+            <Button href={portal.assessment} size="sm">
+              Start Assessment
             </Button>
           </div>
 
@@ -96,16 +97,23 @@ export function Header() {
                   {item.label}
                 </Link>
               ))}
-              <Link
-                href="/contact"
+              <a
+                href={portal.origin}
                 className="py-3 text-lg text-text-muted hover:text-text-secondary transition-colors"
                 onClick={() => setMobileOpen(false)}
               >
-                Contact
-              </Link>
+                Incident Portal
+              </a>
+              <a
+                href={portal.auth}
+                className="py-3 text-lg text-text-muted hover:text-text-secondary transition-colors"
+                onClick={() => setMobileOpen(false)}
+              >
+                Sign in to a case
+              </a>
               <div className="pt-6">
-                <Button href="/incident" className="w-full">
-                  Get Incident Help
+                <Button href={portal.assessment} className="w-full">
+                  Start Assessment
                 </Button>
               </div>
             </nav>

@@ -1,36 +1,36 @@
-import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
+import { portal, portalAssessment } from "@/lib/portal";
 
 const audiences = [
   {
     title: "Experiencing an incident",
     description: "Compromised systems, malware, suspicious access, account takeover, or suspected breach.",
     question: "Can you figure out what happened and help us recover?",
-    cta: "Get Incident Help",
-    href: "/incident/",
+    cta: "Start Incident Assessment",
+    href: portal.assessment,
   },
   {
     title: "Need independent security expertise",
     description: "Architecture review, security assessment, threat modelling, or a technical second opinion.",
     question: "Can you review our security posture objectively?",
-    cta: "Request a Security Review",
-    href: "/contact/",
+    cta: "Start an Assessment",
+    href: portalAssessment("other"),
   },
   {
     title: "Lawyer or investigator",
     description: "Technical incident interpretation, digital evidence review, expert reports, or timeline reconstruction.",
     question: "Can you help explain the technical evidence?",
-    cta: "Discuss a Technical Case",
-    href: "/contact/",
+    cta: "Start a Forensics Assessment",
+    href: portalAssessment("digital_forensics"),
   },
   {
     title: "Individual or executive",
     description: "Compromised account, suspicious device behaviour, impersonation, or personal cybersecurity incident.",
     question: "Can someone investigate this discreetly?",
-    cta: "Request Private Assistance",
-    href: "/contact/",
+    cta: "Start Private Assessment",
+    href: portalAssessment("suspicious_activity"),
   },
 ];
 

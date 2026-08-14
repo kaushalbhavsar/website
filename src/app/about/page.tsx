@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { personSchema } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
+import { portal } from "@/lib/portal";
 
 export const metadata = createMetadata({
   title: "About",
@@ -85,7 +86,7 @@ export default function AboutPage() {
 
       <section className="py-16">
         <Container size="narrow" className="text-center">
-          <Button href="/incident/" size="lg">Get Incident Help</Button>
+          <Button href={portal.assessment} size="lg">Start Incident Assessment</Button>
         </Container>
       </section>
     </>

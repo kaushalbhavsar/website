@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
+import { portal } from "@/lib/portal";
 
 type IncidentCTAProps = {
   variant?: "default" | "compact";
@@ -21,7 +22,7 @@ export function IncidentCTA({ variant = "default" }: IncidentCTAProps) {
                 The first few decisions can determine how much evidence survives.
               </p>
             </div>
-            <Button href="/incident">Request Incident Assistance</Button>
+            <Button href={portal.assessment}>Start Incident Assessment</Button>
           </div>
         </Container>
       </section>
@@ -43,8 +44,8 @@ export function IncidentCTA({ variant = "default" }: IncidentCTAProps) {
             consider whether those actions could destroy evidence needed to understand the incident.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button href="/incident" size="lg">
-              Request Incident Assistance
+            <Button href={portal.assessment} size="lg">
+              Start Incident Assessment
             </Button>
             <Link
               href="/incident-response/first-steps"

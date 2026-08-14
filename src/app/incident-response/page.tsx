@@ -51,7 +51,10 @@ export default function IncidentResponsePage() {
       </section>
 
       <IncidentCTA variant="compact" />
-      <ContactCTA primaryLabel="Get Incident Help" primaryHref="/incident/" />
+      <ContactCTA
+        title="Start incident response"
+        description="Begin with a short assessment in the portal. No account is required to describe what happened."
+      />
     </>
   );
 }
