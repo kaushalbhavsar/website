@@ -77,7 +77,7 @@ export default async function InsightArticlePage({ params }: Props) {
 
           <div className="mt-12 pt-8 border-t border-border space-y-4">
             <a href={portal.assessment} className="text-accent hover:text-accent-hover text-sm block">
-              {portalCta.report} →
+              {portalCta.incident} →
             </a>
             {trainingBridge && (
               <p className="text-sm text-text-muted">

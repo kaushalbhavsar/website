@@ -34,7 +34,7 @@ export function EmergencyBanner() {
               href={portal.assessment}
               className="text-accent hover:text-accent-hover underline underline-offset-2 transition-colors"
             >
-              {portalCta.report}
+              {portalCta.incident} →
             </a>
           </p>
           <button

@@ -5,7 +5,10 @@ export const portal = {
 } as const;
 
 export const portalCta = {
-  report: "I Need This Investigated",
+  brand: "Investigate What Happened",
+  incident: "Get Incident Help",
+  individual: "Investigate My Situation",
+  legal: "Request Technical Investigation",
   signIn: "Sign in to a case",
   existingCase: "I already have a case",
 } as const;

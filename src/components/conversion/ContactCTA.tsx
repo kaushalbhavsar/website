@@ -15,7 +15,7 @@ type ContactCTAProps = {
 export function ContactCTA({
   title = "Need technical guidance?",
   description = "Whether you are dealing with an active incident or planning security improvements, start in the incident response portal so context, evidence and decisions stay in one place.",
-  primaryLabel = portalCta.report,
+  primaryLabel = portalCta.brand,
   primaryHref = portal.assessment,
   secondaryLabel = portalCta.signIn,
   secondaryHref = portal.auth,

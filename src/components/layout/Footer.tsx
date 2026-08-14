@@ -96,7 +96,7 @@ export function Footer() {
                   href={portal.assessment}
                   className="text-sm text-text-secondary hover:text-text-primary transition-colors"
                 >
-                  {portalCta.report}
+                  {portalCta.brand} →
                 </a>
               </li>
               <li>

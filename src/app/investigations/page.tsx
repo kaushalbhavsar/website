@@ -5,7 +5,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ServiceCard } from "@/components/services/ServiceCard";
 import { ContactCTA } from "@/components/conversion/ContactCTA";
 import { services } from "@/lib/content/services";
-import { portalAssessment } from "@/lib/portal";
+import { portalAssessment, portalCta } from "@/lib/portal";
 
 export const metadata = createMetadata({
   title: "Investigations",
@@ -43,6 +43,7 @@ export default function InvestigationsPage() {
       <ContactCTA
         title="Discuss a technical case"
         description="Start in the portal so investigation context, evidence and findings stay in one restricted case workspace."
+        primaryLabel={portalCta.legal}
         primaryHref={portalAssessment("digital_forensics")}
       />
     </>

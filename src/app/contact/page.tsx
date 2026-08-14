@@ -3,6 +3,7 @@ import { PageHero } from "@/components/hero/PageHero";
 import { Container } from "@/components/layout/Container";
 import { PortalHandoff } from "@/components/conversion/PortalHandoff";
 import { siteConfig } from "@/lib/site";
+import { portalCta } from "@/lib/portal";
 
 export const metadata = createMetadata({
   title: "Contact",
@@ -27,7 +28,7 @@ export default function ContactPage() {
               If you are not sure how to classify the situation, begin anyway and choose Other / Not sure.
             </p>
           </div>
-          <PortalHandoff showTrainingLink />
+          <PortalHandoff showTrainingLink primaryLabel={portalCta.brand} />
         </Container>
       </section>
     </>

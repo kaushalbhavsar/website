@@ -86,7 +86,7 @@ export default function AboutPage() {
 
       <section className="py-16">
         <Container size="narrow" className="text-center">
-          <Button href={portal.assessment} size="lg">{portalCta.report}</Button>
+          <Button href={portal.assessment} size="lg">{portalCta.brand}</Button>
         </Container>
       </section>
     </>

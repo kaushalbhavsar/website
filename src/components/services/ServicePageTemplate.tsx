@@ -33,7 +33,11 @@ export function ServicePageTemplate({ service }: { service: Service }) {
     .slice(0, 3);
 
   const ctaHref = portalAssessmentForService(service.slug);
-  const ctaLabel = portalCta.report;
+  const ctaLabel = service.slug.includes("expert-reports")
+    ? portalCta.legal
+    : service.slug.includes("advisory") || service.slug.includes("architecture")
+      ? portalCta.brand
+      : portalCta.incident;
 
   return (
     <>

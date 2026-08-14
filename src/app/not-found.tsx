@@ -16,7 +16,7 @@ export default function NotFound() {
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button href="/">Return Home</Button>
           <a href={portal.assessment} className="text-sm text-accent hover:text-accent-hover">
-            {portalCta.report} →
+            {portalCta.incident} →
           </a>
         </div>
       </Container>

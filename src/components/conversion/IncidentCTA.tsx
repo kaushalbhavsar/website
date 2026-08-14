@@ -22,7 +22,7 @@ export function IncidentCTA({ variant = "default" }: IncidentCTAProps) {
                 The first few decisions can determine how much evidence survives.
               </p>
             </div>
-            <Button href={portal.assessment}>{portalCta.report}</Button>
+            <Button href={portal.assessment}>{portalCta.incident}</Button>
           </div>
         </Container>
       </section>
@@ -45,7 +45,7 @@ export function IncidentCTA({ variant = "default" }: IncidentCTAProps) {
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button href={portal.assessment} size="lg">
-              {portalCta.report}
+              {portalCta.incident}
             </Button>
             <Link
               href="/incident-response/first-steps"

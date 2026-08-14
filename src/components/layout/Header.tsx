@@ -67,7 +67,7 @@ export function Header() {
               Portal
             </a>
             <Button href={portal.assessment} size="sm">
-              {portalCta.report}
+              {portalCta.brand}
             </Button>
           </div>
 
@@ -113,7 +113,7 @@ export function Header() {
               </a>
               <div className="pt-6">
                 <Button href={portal.assessment} className="w-full">
-                  {portalCta.report}
+                  {portalCta.brand}
                 </Button>
               </div>
             </nav>

@@ -60,7 +60,7 @@ export default function FirstStepsPage() {
           </div>
 
           <div className="mt-12 text-center">
-            <Button href={portal.assessment} size="lg">{portalCta.report}</Button>
+            <Button href={portal.assessment} size="lg">{portalCta.incident}</Button>
           </div>
 
           <p className="mt-8 text-xs text-text-muted text-center leading-relaxed">

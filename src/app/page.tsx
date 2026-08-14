@@ -81,7 +81,7 @@ export default function HomePage() {
             <InvestigationSteps />
           </div>
           <div className="mt-10 text-center">
-            <Button href={portal.assessment} size="lg">{portalCta.report}</Button>
+            <Button href={portal.assessment} size="lg">{portalCta.incident}</Button>
           </div>
         </Container>
       </section>

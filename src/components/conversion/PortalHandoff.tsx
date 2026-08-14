@@ -24,9 +24,14 @@ const steps = [
 type PortalHandoffProps = {
   className?: string;
   showTrainingLink?: boolean;
+  primaryLabel?: string;
 };
 
-export function PortalHandoff({ className, showTrainingLink = false }: PortalHandoffProps) {
+export function PortalHandoff({
+  className,
+  showTrainingLink = false,
+  primaryLabel = portalCta.incident,
+}: PortalHandoffProps) {
   return (
     <div className={cn("space-y-8", className)}>
       <ol className="space-y-5">
@@ -45,7 +50,7 @@ export function PortalHandoff({ className, showTrainingLink = false }: PortalHan
 
       <div className="flex flex-col sm:flex-row gap-4">
         <Button href={portal.assessment} size="lg">
-          {portalCta.report}
+          {primaryLabel}
         </Button>
         <Button href={portal.auth} variant="outline" size="lg">
           {portalCta.existingCase}

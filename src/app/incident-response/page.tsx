@@ -7,6 +7,7 @@ import { InvestigationSteps } from "@/components/investigation/InvestigationStep
 import { IncidentCTA } from "@/components/conversion/IncidentCTA";
 import { ContactCTA } from "@/components/conversion/ContactCTA";
 import { services } from "@/lib/content/services";
+import { portalCta } from "@/lib/portal";
 
 export const metadata = createMetadata({
   title: "Incident Response",
@@ -54,6 +55,7 @@ export default function IncidentResponsePage() {
       <ContactCTA
         title="Start incident response"
         description="Describe what happened in the portal. No account is required to begin."
+        primaryLabel={portalCta.incident}
       />
     </>
   );
