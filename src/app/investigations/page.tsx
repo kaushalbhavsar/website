@@ -1,10 +1,13 @@
+import Link from "next/link";
 import { createMetadata } from "@/lib/seo";
 import { PageHero } from "@/components/hero/PageHero";
 import { Container } from "@/components/layout/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ServiceCard } from "@/components/services/ServiceCard";
+import { CaseNoteCard } from "@/components/content/CaseNoteCard";
 import { ContactCTA } from "@/components/conversion/ContactCTA";
 import { services } from "@/lib/content/services";
+import { getPublishedCaseNotes } from "@/lib/content/cases";
 import { portalAssessment } from "@/lib/portal";
 
 export const metadata = createMetadata({
@@ -17,6 +20,7 @@ export default function InvestigationsPage() {
   const investigationServices = services.filter((s) =>
     ["incident-investigation", "malware-analysis", "insider-threat-investigation", "expert-reports"].includes(s.slug)
   );
+  const publishedCases = getPublishedCaseNotes();
 
   return (
     <>
@@ -39,6 +43,27 @@ export default function InvestigationsPage() {
           </div>
         </Container>
       </section>
+
+      {publishedCases.length > 0 && (
+        <section className="py-16 bg-surface border-y border-border">
+          <Container>
+            <SectionHeading
+              title="From investigation work"
+              description="Anonymised notes from verified investigations. Identifying details are removed. These are not customer case studies."
+            />
+            <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+              {publishedCases.map((note) => (
+                <CaseNoteCard key={note.slug} note={note} />
+              ))}
+            </div>
+            <div className="mt-8">
+              <Link href="/cases/" className="text-sm text-accent hover:text-accent-hover">
+                All technical case notes →
+              </Link>
+            </div>
+          </Container>
+        </section>
+      )}
 
       <ContactCTA
         title="Discuss a technical case"

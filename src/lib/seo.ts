@@ -141,13 +141,15 @@ export function articleSchema(article: {
   publishedAt: string;
   modifiedAt?: string;
   category: string;
+  pathPrefix?: "insights" | "cases";
 }) {
+  const prefix = article.pathPrefix ?? "insights";
   return {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: article.title,
     description: article.description,
-    url: `${siteConfig.url}/insights/${article.slug}`,
+    url: `${siteConfig.url}/${prefix}/${article.slug}/`,
     datePublished: article.publishedAt,
     dateModified: article.modifiedAt ?? article.publishedAt,
     author: {
